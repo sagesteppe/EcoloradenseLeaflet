@@ -62,14 +62,14 @@ No_pls_col = colorFactor(palette = pal, occurrences$No_pls_lvls)
 
 ```
 
-## Eriogonum coloradense taxonomy
+# Eriogonum coloradense taxonomy
 
 
-## Eriogonum coloradense habitat
+# Eriogonum coloradense habitat
 
 
 
-## Eriogonum coloradense occurrence data {background-image=./pictures/Area.jpg}
+# Eriogonum coloradense occurrence data {background-image=./pictures/Area.jpg}
 
 ```{r}
 
