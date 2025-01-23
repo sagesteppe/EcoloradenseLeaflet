@@ -132,19 +132,20 @@ leaflet(occurrences) %>%
 
 ## Modelled Suitable Habitat
 
-
-```{r Occurrences map}
+```{r suitable habitat map}
 #| column: screen-inset-left
 
+r_cb <- terra::rast('./data/raster/cb.tif')
+r_cd <- terra::rast('./data/raster/cd.tif')
+pal = colorNumeric(
+  c("red", 'orange', "green"),
+  c(0.45, 1),
+  na.color = "transparent")
 
-r_cb <- rast('./data/raster/cb.tif')
-r_cd <- rast('./data/raster/cd.tif')
-pal = colorNumeric(c("red", 'orange', "green"), c(0.45, 1),
-                na.color = "transparent")
-
+r_cd_v <-seq(0.45, 1, by = 0.15)
+pal_rev <- colorNumeric(c("red", "orange", "green"), r_cd_v, reverse = TRUE)
 
 leaflet(occurrences) %>%
-  
   addProviderTiles(providers$Esri.WorldImagery) %>% 
   addRasterImage(r_cb, colors = pal, opacity = 0.5) %>%
   addRasterImage(r_cd, colors = pal, opacity = 0.5) %>%
@@ -160,5 +161,11 @@ leaflet(occurrences) %>%
     'bottomright', 
     pal = No_pls_col, values = occurrences$No_pls_lvls,
     title = 'No. of plants<br>per 3x3m<br>quadrat',
-    opacity = 1)
+    opacity = 1) %>% 
+  addLegend(
+    'topright',
+    pal = pal_rev, values = sort(r_cd_v, decreasing = TRUE),
+    labFormat = labelFormat(transform = function(x) sort(r_cd_v, decreasing = TRUE)),
+    title = "Predicted Pr.<br>Suitable Habitat")
+
 ```
