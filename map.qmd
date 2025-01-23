@@ -1,0 +1,86 @@
+---
+title: "Eriogonum coloradense Occurrences"
+format: html
+editor: visual
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, comment = "", fig.align="center")
+```
+
+```{r Load Libraries}
+library(sf)
+library(leaflet)
+library(tidyverse)
+```
+
+
+```{r Import occurrence data}
+p2v <- file.path('..', 'data' , 'vector')
+occurrences <- sf::st_read(file.path(p2v, '3m-presence-iter1.gpkg'), quiet = TRUE) |>
+  
+  # count the total number of plants found per quadrat. 
+  rowwise() |>
+  mutate(
+    No_pls = sum(Prsnc_M, Prsnc_J, Presenc,  na.rm = TRUE)
+    ) |>
+  ungroup() |>
+  
+  # we only need a few columns for our map. 
+  select(Lctn_bb, Lctn_fl, Presenc, No_pls)  %>% 
+  
+  # there are a couple geometries, these won't fly with this project . NOte we need to 
+  # use the magrittr pipe operator here to select the ! empty geometries. 
+  filter(!st_is_empty(.)) |>
+  sf::st_transform(4326)
+
+# we will use a discrete palette to show how many plants we have per unit area. 
+brks <- c(0, 1, 4, 16, 32, 64, 128, 256)
+occurrences$No_pls_lvls = cut(
+  occurrences$No_pls, 
+  breaks = brks,
+  right = FALSE,
+  ordered_result = TRUE)
+
+# I'm not very familiar with leaflet, so we are going to rename out cut levels from
+# R parlance, which reflects which values are included, to our parlance.  
+# I'm sure there is an easier way to do this with loading some package... 
+occurrences$No_pls_lvls <- gsub(',', '-', gsub('\\[|\\)', '', occurrences$No_pls_lvls))
+
+# these ranges may be confusing for some users, but the ambiguity really affects
+# this label!
+occurrences$No_pls_lvls <- gsub('0-1', '0', occurrences$No_pls_lvls)
+
+# now we respecify the order of the levels with our modified label names. 
+occurrences$No_pls_lvls <- factor(
+  occurrences$No_pls_lvls, levels = 
+    c('0', '1-4', '4-16', '16-32', '32-64', '64-128', '128-256')
+  )
+
+
+pal <- c('#b30000', '#ffffcc','#c7e9b4','#7fcdbb','#41b6c4','#2c7fb8','#253494') # color brewer
+No_pls_col = colorFactor(palette = pal, occurrences$No_pls_lvls)
+
+```
+
+## Eriogonum coloradense occurrence data 
+```{r}
+
+leaflet(occurrences) %>%
+  
+  addProviderTiles(providers$Esri.WorldImagery) %>% 
+  addCircleMarkers(
+    group = 'Presenc', 
+    opacity = 0.9,
+    clusterOptions = markerClusterOptions(maxClusterRadius = 2), 
+    color = ~No_pls_col(No_pls_lvls), 
+    radius = sqrt(occurrences$No_pls),
+    label = ~paste0(Lctn_bb, ": ", No_pls, ' plants')
+    ) %>% 
+  addLegend(
+    'bottomright', 
+    pal = No_pls_col, values = occurrences$No_pls_lvls,
+    title = 'No. of plants<br>per 3x3m<br>quadrat',
+    opacity = 1)
+```
+
