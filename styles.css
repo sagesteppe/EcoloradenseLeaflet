@@ -1,0 +1,8 @@
+.text-col {
+  height: 80%;
+  font-color: grey;
+  background-color: lightgray;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+

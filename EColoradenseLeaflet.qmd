@@ -1,11 +1,23 @@
 ---
-title: "Eriogonum coloradense Occurrences"
-format: html
-editor: visual
+title: "*Eriogonum coloradense*"
+title-slide-attributes:
+  data-background-image: ./pictures/Area.jpg
+date: today
+page-layout: custom
+date-format: long
+format: 
+  revealjs:
+    theme: black
+    highlight: pygments
+    preview-links: auto
+    chalkboard: 
+      boardmarker-width: 5
+    reveal_options:
+      width: 1920
+      height: 1080
+      fontsize: 22pt
 ---
 
-
-cover slide 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, comment = "", fig.align="center")
 ```
@@ -64,18 +76,78 @@ No_pls_col = colorFactor(palette = pal, occurrences$No_pls_lvls)
 
 ```
 
-# Eriogonum coloradense taxonomy
- wrods 
-# Eriogonum coloradense habitat
+## [Taxonomy]{style="color:black;"}  {background-image=./pictures/Ecoloradense.jpg}
 
-words 
-# Eriogonum coloradense occurrence data {background-image="./pictures/Area.jpg"}
+:::: {.columns}
+::: {.column width="48%" style="background-color: #00000070"}
 
-```{r}
+> "The continued recognition of *E. coloradense* is probably dubious given what is already reduced here to synonymy under *E. lonchophyllum*" 
+[- Fl. North America](http://www.efloras.org/florataxon.aspx?flora_id=1&taxon_id=250060371) 
+
+:::
+
+
+::: {.column width="48%" style="background-color: #00000070"}
+
+> "It differs from *E. lonchophyllum* by its low, matted habit and capitate inflorescence." 
+[- Eriogonum as a Rock Garden Plant](http://www.plantsystematics.org/reveal/pbio/eriog/eriogarden.html)
+
+:::
+::::
+
+## [Habitat I]{style="color:black;"}  {background-image=./pictures/quadrat.jpg}
+
+## [Habitat II]{style="color:black;"} {background-image=./pictures/Cochetopa.jpg}
+
+::: {.rect width="100%" style="background-color: #00000070"}
+
+> "*Eriogonum coloradense* is unusual in that it has an extremely broad ecological range. It has been documented on every soil texture, slope, and aspect. It has been found on sedimentary, granitic, and volcanic substrates, with *Artemisia* species (sagebrush) and *Bouteloua gracilis* (blue grama) and also with alpine cushion plants..."
+
+[\n- E. coloradense Technical Conservation Assessment](https://www.fs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb5206850.pdf)
+:::
+
+
+## Occurrences  
+
+```{r Occurrences map}
+#| column: screen-inset-left
+#| 
+leaflet(occurrences) %>%
+  
+  addProviderTiles(providers$Esri.WorldImagery) %>% 
+  addCircleMarkers(
+    group = 'Presenc', 
+    opacity = 0.9,
+    clusterOptions = markerClusterOptions(maxClusterRadius = 2), 
+    color = ~No_pls_col(No_pls_lvls), 
+    radius = sqrt(occurrences$No_pls),
+    label = ~paste0(Lctn_bb, ": ", No_pls, ' plants')
+    ) %>% 
+  addLegend(
+    'bottomright', 
+    pal = No_pls_col, values = occurrences$No_pls_lvls,
+    title = 'No. of plants<br>per 3x3m<br>quadrat',
+    opacity = 1)
+```
+
+## Modelled Suitable Habitat
+
+
+```{r Occurrences map}
+#| column: screen-inset-left
+
+
+r_cb <- rast('./data/raster/cb.tif')
+r_cd <- rast('./data/raster/cd.tif')
+pal = colorNumeric(c("red", 'orange', "green"), c(0.45, 1),
+                na.color = "transparent")
+
 
 leaflet(occurrences) %>%
   
   addProviderTiles(providers$Esri.WorldImagery) %>% 
+  addRasterImage(r_cb, colors = pal, opacity = 0.5) %>%
+  addRasterImage(r_cd, colors = pal, opacity = 0.5) %>%
   addCircleMarkers(
     group = 'Presenc', 
     opacity = 0.9,
