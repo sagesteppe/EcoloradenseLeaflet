@@ -14,9 +14,8 @@ library(leaflet)
 library(tidyverse)
 ```
 
-
 ```{r Import occurrence data}
-p2v <- file.path('..', 'data' , 'vector')
+p2v <- file.path('.', 'data' , 'vector')
 occurrences <- sf::st_read(file.path(p2v, '3m-presence-iter1.gpkg'), quiet = TRUE) |>
   
   # count the total number of plants found per quadrat. 
@@ -63,7 +62,8 @@ No_pls_col = colorFactor(palette = pal, occurrences$No_pls_lvls)
 
 ```
 
-## Eriogonum coloradense occurrence data 
+## Eriogonum coloradense occurrence data
+
 ```{r}
 
 leaflet(occurrences) %>%
@@ -83,4 +83,3 @@ leaflet(occurrences) %>%
     title = 'No. of plants<br>per 3x3m<br>quadrat',
     opacity = 1)
 ```
-
