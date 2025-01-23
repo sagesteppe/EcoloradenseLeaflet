@@ -4,6 +4,8 @@ format: html
 editor: visual
 ---
 
+
+cover slide 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, comment = "", fig.align="center")
 ```
@@ -63,9 +65,10 @@ No_pls_col = colorFactor(palette = pal, occurrences$No_pls_lvls)
 ```
 
 # Eriogonum coloradense taxonomy
-
+ wrods 
 # Eriogonum coloradense habitat
 
+words 
 # Eriogonum coloradense occurrence data {background-image="./pictures/Area.jpg"}
 
 ```{r}
