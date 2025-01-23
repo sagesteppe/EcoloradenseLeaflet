@@ -169,3 +169,11 @@ leaflet(occurrences) %>%
     title = "Predicted Pr.<br>Suitable Habitat")
 
 ```
+
+::: {style="font-size: 40%;"}
+*Note raster pixels which have modelled suitability probabilities less than 0.45 have been 'removed' to save data so the map moves quickly online; the scattered points out to the East have had their suitability removed as well to save memory and keep the map interactive.*
+:::
+
+
+## Questions for respondents
+

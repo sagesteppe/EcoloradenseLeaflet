@@ -32,6 +32,13 @@
     "href": "EColoradenseLeaflet.html#modelled-suitable-habitat",
     "title": "Eriogonum coloradense",
     "section": "Modelled Suitable Habitat",
-    "text": "Modelled Suitable Habitat"
+    "text": "Modelled Suitable Habitat\n\n\n\n\n\n\n\nNote raster pixels which have modelled suitability probabilities less than 0.45 have been ‘removed’ to save data so the map moves quickly online; the scattered points out to the East have had their suitability removed as well to save memory and keep the map interactive."
+  },
+  {
+    "objectID": "EColoradenseLeaflet.html#questions-for-respondents",
+    "href": "EColoradenseLeaflet.html#questions-for-respondents",
+    "title": "Eriogonum coloradense",
+    "section": "Questions for respondents",
+    "text": "Questions for respondents"
   }
 ]
