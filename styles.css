@@ -1,3 +1,5 @@
+/* file: style.css */
+
 .text-col {
   height: 80%;
   font-color: grey;
@@ -6,3 +8,9 @@
   box-sizing: border-box;
 }
 
+.v-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}

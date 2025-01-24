@@ -35,10 +35,38 @@
     "text": "Modelled Suitable Habitat\n\n\n\n\n\n\n\nNote raster pixels which have modelled suitability probabilities less than 0.45 have been ‘removed’ to save data so the map moves quickly online; the scattered points out to the East have had their suitability removed as well to save memory and keep the map interactive."
   },
   {
+    "objectID": "EColoradenseLeaflet.html#computational-questions---phase-1",
+    "href": "EColoradenseLeaflet.html#computational-questions---phase-1",
+    "title": "Eriogonum coloradense",
+    "section": "Computational Questions - Phase 1",
+    "text": "Computational Questions - Phase 1\n\n\nHow does the total amount of suitable habitat predicted vary among different spatial resolutions (90m, 30m, 10m)?\n\n\n\n\n\nCan we predict plant abundance using gradient descent?\n\n\n\n\n\nCan we delineate population boundaries using thresholding? How accurate are our estimates of a populations spatial extent?\n\n\n\n\n\nCan we predict population occupancy of suitable habitat using naive landscape connectivity metrics?"
+  },
+  {
+    "objectID": "EColoradenseLeaflet.html#comp.-questions---phase-1---reu",
+    "href": "EColoradenseLeaflet.html#comp.-questions---phase-1---reu",
+    "title": "Eriogonum coloradense",
+    "section": "Comp. Questions - Phase 1 - REU",
+    "text": "Comp. Questions - Phase 1 - REU\n\n\nHow do predictions from existing records (herbaria and citizen science), compare to predictions from existing + supplemented records, and from supplemented and single iteration ground truthed?\n\n\n\n\n\nAre pre-existing records biased? Do they represent the ‘lowest’ elevation occupied by each population? Does this affect model predictions?"
+  },
+  {
+    "objectID": "EColoradenseLeaflet.html#laboratory-questions---phase-1",
+    "href": "EColoradenseLeaflet.html#laboratory-questions---phase-1",
+    "title": "Eriogonum coloradense",
+    "section": "Laboratory Questions - Phase 1",
+    "text": "Laboratory Questions - Phase 1\n\n\nWhat does the species suitable habitat look like throughout the holocene at 10,000, 5,000, BC, and 0 AD? Can we use this to infer the age of colonization of the three major metapopulations?\n\n\n\n\nUsing spatial clustering techniques (DBSCAN, spatially weighted hierarchial) and landscape connectivity metrics can we predict the population genetic structure of the spatially-structured-population in the Elk Mountains?"
+  },
+  {
     "objectID": "EColoradenseLeaflet.html#questions-for-respondents",
     "href": "EColoradenseLeaflet.html#questions-for-respondents",
     "title": "Eriogonum coloradense",
     "section": "Questions for respondents",
     "text": "Questions for respondents"
+  },
+  {
+    "objectID": "EColoradenseLeaflet.html#section",
+    "href": "EColoradenseLeaflet.html#section",
+    "title": "Eriogonum coloradense",
+    "section": "",
+    "text": "“I love those who yearn for the impossible”\n\n Goethe"
   }
 ]

@@ -175,5 +175,48 @@ leaflet(occurrences) %>%
 :::
 
 
+## Computational Questions - Phase 1
+
+::: {.fragment .fade-in-then-semi-out}
+- How does the total amount of suitable habitat predicted vary among different spatial resolutions (90m, 30m, 10m)?   
+:::
+::: {.fragment .fade-in-then-semi-out}
+- Can we predict plant abundance using gradient descent?   
+:::
+::: {.fragment .fade-in-then-semi-out}
+- Can we delineate population boundaries using thresholding? How accurate are our estimates of a populations spatial extent?  
+:::
+::: {.fragment .fade-in-then-semi-out}
+- Can we predict population occupancy of suitable habitat using naive landscape connectivity metrics?  
+:::
+
+## Comp. Questions - Phase 1 - REU 
+
+::: {.fragment .fade-in-then-semi-out}
+- How do predictions from existing records (herbaria and citizen science), compare to predictions from existing + supplemented records, and from supplemented and single iteration ground truthed?   
+:::
+::: {.fragment .fade-in-then-semi-out}
+- Are pre-existing records biased? Do they represent the 'lowest' elevation occupied by each population? Does this affect model predictions?   
+:::
+
+## Laboratory Questions - Phase 1
+
+::: {.fragment .fade-in-then-semi-out}
+- What does the species suitable habitat look like throughout the holocene at 10,000, 5,000, BC, and 0 AD? Can we use this to infer the age of colonization of the three major metapopulations? 
+:::
+::: {.fragment .fade-in-then-semi-out}
+- Using spatial clustering techniques (DBSCAN, spatially weighted hierarchial) and landscape connectivity metrics can we *predict* the population genetic structure of the spatially-structured-population in the Elk Mountains?   
+:::
+
 ## Questions for respondents
 
+## {visibility="uncounted"}
+
+::::: {.columns style='display: flex !important; height: 90%;'}
+
+::: {.column width="100%" style='display: flex; justify-content: center; align-items: center;'}
+> "*I love those who yearn for the impossible*"
+
+<br> [Goethe]{style="float:right;color:'#706e6e'"}
+:::
+::::
